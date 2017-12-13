@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "admin@blocipedia.com"
+  default from: "carolynoliveira515@gmail.com"
   layout 'mailer'
 end
