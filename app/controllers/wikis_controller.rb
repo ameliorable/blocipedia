@@ -18,7 +18,7 @@ class WikisController < ApplicationController
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
-      redirect_to @wiki
+      redirect_to wikis_path
     else
       flash.now[:alert] = "There was an error saving the wiki. Please try again."
       render :new
@@ -36,7 +36,7 @@ class WikisController < ApplicationController
 
     if @wiki.save
       flash[:notice] = "Wiki was updated."
-      redirect_to @wiki
+      redirect_to wikis_path
     else
       flash.now[:alert] = "There was an error saving the wiki. Please try again."
       render :edit
