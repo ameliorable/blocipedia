@@ -1,9 +1,8 @@
-require 'faker'
-
 10.times do
   User.create!(
     email: Faker::Internet.email,
-    password: Faker::Internet.password
+    password: Faker::Internet.password,
+    confirmed_at: Time.now
   )
 end
 
@@ -11,13 +10,15 @@ end
   Wiki.create!(
     title: Faker::TwinPeaks.location,
     body: Faker::TwinPeaks.quote,
-    private: false
+    private: false,
+    user: users.sample
   )
 end
 
 User.create!(
   email: "carolynoliveira515@gmail.com",
-  password: "password"
+  password: "password",
+  confirmed_at: Time.now
 )
 
 wikis = Wiki.all
