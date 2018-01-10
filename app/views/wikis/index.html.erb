@@ -1,12 +1,33 @@
-<h1>All Wikis</h1>
-<% @wikis.each do |wiki| %>
-  <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-        <%= link_to wiki.title, wiki %>
-      </h4>
-    </div>
+<h1>Wikis</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <% if current_user.admin? || current_user.premium? %>
+      <% @wikis.each do |wiki| %>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to wiki.title, wiki %>
+            </h4>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <% @wikis.each do |wiki| %>
+        <% if wiki.private == false || wiki.private == nil %>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to wiki.title, wiki %>
+            </h4>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
   </div>
-<% end %>
-<br>
-<%= link_to "New Wiki", new_wiki_path(@wiki), class: 'btn btn-success' %>
+  <br>
+  <div class="col-md-4">
+    <%= link_to "New Wiki", new_wiki_path(@wiki), class: 'btn btn-success' %>
+  </div>
+</div>
