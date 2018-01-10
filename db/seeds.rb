@@ -6,6 +6,9 @@
   )
 end
 
+wikis = Wiki.all
+users = User.all
+
 25.times do
   Wiki.create!(
     title: Faker::TwinPeaks.location,
@@ -20,9 +23,6 @@ User.create!(
   password: "password",
   confirmed_at: Time.now
 )
-
-wikis = Wiki.all
-users = User.all
 
 puts "Seed finished"
 puts "#{User.count} users created."
