@@ -2,7 +2,6 @@
 
 <div class="row">
   <div class="col-md-8">
-    <% if current_user.admin? || current_user.premium? %>
       <% @wikis.each do |wiki| %>
         <div class="media">
           <div class="media-body">
@@ -12,19 +11,6 @@
           </div>
         </div>
       <% end %>
-    <% else %>
-      <% @wikis.each do |wiki| %>
-        <% if wiki.private == false || wiki.private == nil %>
-        <div class="media">
-          <div class="media-body">
-            <h4 class="media-heading">
-              <%= link_to wiki.title, wiki %>
-            </h4>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
   </div>
   <br>
   <div class="col-md-4">

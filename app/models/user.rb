@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :wikis, dependent: :destroy
+  has_many :collaborators, dependent: :destroy
+  # has_many :collaborations, through: :collaborators, source: :wiki
 
   before_save { self.email = email.downcase }
   before_save { self.role ||= :standard }
@@ -12,6 +14,7 @@ class User < ActiveRecord::Base
   enum role: [:standard, :premium, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
+  private
   def set_default_role
     self.role ||= :standard
   end

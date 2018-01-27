@@ -24,6 +24,12 @@ User.create!(
   confirmed_at: Time.now
 )
 
+User.create!(
+  email: "carolynlwalcott@gmail.com",
+  password: "password",
+  confirmed_at: Time.now
+)
+
 puts "Seed finished"
 puts "#{User.count} users created."
 puts "#{Wiki.count} wikis created."
